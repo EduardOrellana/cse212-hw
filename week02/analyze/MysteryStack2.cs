@@ -1,4 +1,9 @@
 ﻿public static class MysteryStack2 {
+
+    /*
+        Solucion al problema
+    
+    */
     private static bool IsFloat(string text) {
         return float.TryParse(text, out _);
     }
