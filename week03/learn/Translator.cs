@@ -24,7 +24,8 @@ public class Translator
     /// <returns>fixed array of divisors</returns>
     public void AddWord(string fromWord, string toWord)
     {
-        // ADD YOUR CODE HERE
+        //Code of Erick Orellana
+        _words[fromWord] = toWord;
     }
 
     /// <summary>
@@ -35,6 +36,10 @@ public class Translator
     public string Translate(string fromWord)
     {
         // ADD YOUR CODE HERE
-        return "";
+        string newWord = "???";
+
+        newWord = _words.ContainsKey(fromWord) ? _words[fromWord] : newWord;
+
+        return newWord;
     }
 }

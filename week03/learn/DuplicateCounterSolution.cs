@@ -54,4 +54,4 @@
         var unique = new HashSet<int>(data);
         return data.Length - unique.Count;
     }
-}
+    }
