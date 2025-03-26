@@ -104,11 +104,11 @@ public static class SetsAndMaps
         // TODO Problem 3 - ADD YOUR CODE HERE
         //Erick Solution
 
-        word1 = word1.ToLower().Replace(" ", "");
-        word2 = word2.ToLower().Replace(" ", "");
+        word1 = word1.Replace(" ", "").ToLower();
+        word2 = word2.Replace(" ", "").ToLower();
 
-        var dictionary1 = new Dictionary<char, int>();
-        var dictionary2 = new Dictionary<char, int>();
+        var dictionary = new Dictionary<char, int>();
+        // var dictionary2 = new Dictionary<char, int>();
 
         if (word1.Length != word2.Length)
         {
@@ -116,42 +116,31 @@ public static class SetsAndMaps
         }
         else
         {
-            for (int i = 0; i < word1.Length; i++)
+            foreach (char c in word1)
             {
-                if (dictionary1.ContainsKey(word1[i]))
-                {
-                    dictionary1[word1[i]]++;
-                }
+                if (dictionary.ContainsKey(c))
+                    dictionary[c]++;
                 else
-                {
-                    dictionary1[word1[i]] = 1;
-                }
+                    dictionary[c] = 1;
+            }
 
-                if (dictionary2.ContainsKey(word2[i]))
-                {
-                    dictionary2[word2[i]]++;
-                }
+            foreach (char c in word2)
+            {
+                if (dictionary.ContainsKey(c))
+                    dictionary[c]--;
                 else
-                {
-                    dictionary2[word2[i]] = 1;
-                }
+                    dictionary[c] = -1;
             }
         }
 
-        foreach (var item in dictionary1)
+        foreach (int count in dictionary.Values)
         {
-            if (dictionary2.ContainsKey(item.Key) && dictionary2[item.Key] == item.Value)
-            {
-                continue;
-            }
-            else
+            if (count != 0)
             {
                 return false;
             }
         }
-
         return true;
-
     }
 
 
