@@ -12,6 +12,13 @@ public class Node
     public void Insert(int value)
     {
         // TODO Start Problem 1
+        // Erick's Code
+
+        if (value == Data)
+        {
+            // Value already exists, do nothing
+            return;
+        }
 
         if (value < Data)
         {
@@ -34,12 +41,35 @@ public class Node
     public bool Contains(int value)
     {
         // TODO Start Problem 2
-        return false;
+        //Erick Solution
+
+        if (value == Data)
+        {
+            return true; // Value found
+        }
+        else if (value < Data)
+        {
+            return Left?.Contains(value) ?? false; // Check left subtree
+        }
+        else
+        {
+            if (Right is null)
+            {
+                return false; // Value not found in the right subtree
+            }
+
+            return Right?.Contains(value) ?? false; // Check right subtree
+        }
     }
 
     public int GetHeight()
     {
         // TODO Start Problem 4
-        return 0; // Replace this line with the correct return statement(s)
+        //Erick Solution
+
+        int leftHeight = Left?.GetHeight() ?? 0;
+        int rightHeight = Right?.GetHeight() ?? 0;
+
+        return 1 + Math.Max(leftHeight, rightHeight);
     }
 }
